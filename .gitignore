@@ -1,6 +1,9 @@
 # Choose ignore
 
 .env
+
+/vendor
+
 /filestory/
 /filestory3/
 /filestory_upload/
