@@ -15,6 +15,10 @@
 session_start();
 require 'functions.php';
 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
 // set cookie
 if ( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
 	$id = $_COOKIE['id'];
@@ -38,41 +42,39 @@ if ( isset($_SESSION["login"]) ) {
 }
 
 
-if ( isset($_POST["login"])) {
-	
-	$username = $_POST["username"];
-	$password = $_POST["password"];
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-	// cek username
-	if ( mysqli_num_rows($result) === 1 ) {
-		
-		// cek password
-		$row = mysqli_fetch_assoc($result);
-		if ( password_verify($password, $row["password"]) ) {
-			// set session
-			$_SESSION["login"] = true;
-			
+    // Check if username exists
+    if ($result->num_rows === 1) {
+        // Fetch associated array
+        $row = $result->fetch_assoc();
 
-			$_SESSION["userId"] = $row["id"];
-				
-			// cek remember me
-			if ( isset($_POST["remember"]) ) {
-				//buat cookie
-				setcookie('login', 'true', time() + 60 );
-				setcookie('key', hash('sha256', $row['username']), time() + 60);
-			}
+        // Verify password
+        if (password_verify($password, $row["password"])) {
+            // Set session and other operations
+            $_SESSION["login"] = true;
+            $_SESSION["userId"] = $row["id"];
 
-			header("Location: menu.php");
-			exit;
-		}
+            if (isset($_POST["remember"])) {
+                setcookie('login', 'true', time() + 60);
+                setcookie('key', hash('sha256', $row['username']), time() + 60);
+            }
 
-	}
+            header("Location: menu.php");
+            exit;
+        }
+    }
 
-	// jika cek username ada error kesini
-	$error = true;
+    $error = true;
 }
+
 
 
 
