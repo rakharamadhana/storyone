@@ -12,6 +12,11 @@ $database = $_ENV['DB_DATABASE'];
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
+// Check connection
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+}
+
 // function ini menerima query dari halaman lain
 function query($query) {
 	global $conn;
