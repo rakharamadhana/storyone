@@ -1,5 +1,6 @@
 # Choose ignore
 
+.env
 /filestory/
 /filestory3/
 /filestory_upload/
