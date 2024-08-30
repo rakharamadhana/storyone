@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_4_1.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="3406" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_1_1.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="93" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_1_1_step4.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="105" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_1_1_step4_addtools.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="188" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_3_1_peerreflection.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="61" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_3_1_peersubmit.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="102" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_1_1_step4_edit.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="3148" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_2_1.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="287" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_3_2_peerreflection.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1080" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/phase_3_3_peerreflection.php" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
+</project>
