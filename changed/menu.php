@@ -9,6 +9,8 @@ if ( !isset($_SESSION["login"]) ) {
 // memanggil functions.php
 require 'functions.php';
 
+die('hello');
+
 $userid = $_SESSION["userId"]; 
 $userku = query("SELECT username FROM user WHERE id = '$userid' ");
 
