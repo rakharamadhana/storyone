@@ -184,7 +184,8 @@ function upload() {
 	# create directory if not
 	if(!is_dir($location)){
 		if (!mkdir($location, 0755, true)) {
-			die('Failed to create directory...');
+			$error = error_get_last();
+			die('Failed to create directory: ' . $error['message']);
 		}
 	}
 

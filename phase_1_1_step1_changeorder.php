@@ -16,7 +16,12 @@ $theme = query("SELECT * FROM theme WHERE user = '$userid'");
 
 <!-- Rubah design order -->
 <?php
-$connect = mysqli_connect("localhost", "taipei", "taipei@2022@", "dst_db");
+$servername = $_ENV['DB_SERVER'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
+$database = $_ENV['DB_DATABASE'];
+
+$connect = mysqli_connect($servername, $username, $password, $database);
 $userid = $_SESSION["userId"];
 $query = "SELECT * FROM theme WHERE user = '$userid' ORDER BY pilih ASC";
 $result = mysqli_query($connect, $query);

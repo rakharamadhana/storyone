@@ -10,7 +10,7 @@ if ( !isset($_SESSION["login"]) ) {
 require 'functions.php';
 
 $userid = $_SESSION["userId"]; 
-$userku = query("SELECT username FROM user WHERE id = '$userid' ");
+$userku = query("SELECT username FROM users WHERE id = '$userid' ");
 
 $info = query("SELECT informasi FROM info_admin");
 
