@@ -578,20 +578,7 @@ function  tambahgroup($data) {
           VALUES
           ('$group_name', '$nama', '".$_SESSION["userId"]."', '$user2', '$user3', '$user4', '$user5')";
 
-	// Execute the query
-	$result = mysqli_query($conn, $query);
-
-	// Debugging Output
-	echo "<pre>";  // This makes the output more readable in the browser
-	echo "SQL Query: " . $query . "\n";  // Output the query
-	if (!$result) {
-		echo "MySQL Error: " . mysqli_error($conn) . "\n";  // Output MySQL error if query failed
-	} else {
-		echo "Query Successful: " . mysqli_affected_rows($conn) . " row(s) affected.\n";  // Output affected rows if query was successful
-	}
-	echo "</pre>";
-
-	die();  // Stop script execution for debugging
+	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
 }
