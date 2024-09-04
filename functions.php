@@ -288,11 +288,11 @@ function registrasi($data) {
 		return false;
 	}
 
-	// enkripsi password
+	// Encrypt password
 	$password = password_hash($password, PASSWORD_DEFAULT);
 
-	// tambahkan username ke database
-	mysqli_query($conn, "INSERT INTO user(username,password) VALUES('$username', '$password')");
+	// Insert username and password into the database with isActive set to a default value (e.g., 1 for active)
+	mysqli_query($conn, "INSERT INTO user(username, password, isActive) VALUES('$username', '$password', 1)");
 
 	return mysqli_affected_rows($conn);
 
