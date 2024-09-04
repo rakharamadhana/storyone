@@ -573,13 +573,14 @@ function  tambahgroup($data) {
 	//$email = htmlspecialchars($data["email"]);
 	//$jurusan = htmlspecialchars($data["jurusan"]);
 
-	die('Check');
-
 	// query insert data
 	$query = "INSERT INTO group_diss
 				VALUES
 			('','$group_name', '$nama', '".$_SESSION["userId"]."', '$user2', '$user3', '$user4', '$user5')
 			";
+
+	die($query);
+
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);
