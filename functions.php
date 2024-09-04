@@ -574,7 +574,7 @@ function  tambahgroup($data) {
 	//$jurusan = htmlspecialchars($data["jurusan"]);
 
 	// Assuming `id` is an AUTO_INCREMENT column, you should not insert a value for it.
-	$query = "INSERT INTO group_diss (group_name, nama, user_id, user2, user3, user4, user5)
+	$query = "INSERT INTO group_diss (group_name, nama, user, user2, user3, user4, user5)
           VALUES
           ('$group_name', '$nama', '".$_SESSION["userId"]."', '$user2', '$user3', '$user4', '$user5')";
 
