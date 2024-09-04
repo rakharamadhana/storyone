@@ -573,10 +573,10 @@ function  tambahgroup($data) {
 	//$email = htmlspecialchars($data["email"]);
 	//$jurusan = htmlspecialchars($data["jurusan"]);
 
-	// query insert data
-	$query = "INSERT INTO group_diss
-            VALUES
-        ('','$group_name', '$nama', '".$_SESSION["userId"]."', '$user2', '$user3', '$user4', '$user5')";
+	// Assuming `id` is an AUTO_INCREMENT column, you should not insert a value for it.
+	$query = "INSERT INTO group_diss (group_name, nama, user_id, user2, user3, user4, user5)
+          VALUES
+          ('$group_name', '$nama', '".$_SESSION["userId"]."', '$user2', '$user3', '$user4', '$user5')";
 
 	// Execute the query
 	$result = mysqli_query($conn, $query);
@@ -594,7 +594,6 @@ function  tambahgroup($data) {
 	die();  // Stop script execution for debugging
 
 	return mysqli_affected_rows($conn);
-
 }
 
 
