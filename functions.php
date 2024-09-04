@@ -573,6 +573,8 @@ function  tambahgroup($data) {
 	//$email = htmlspecialchars($data["email"]);
 	//$jurusan = htmlspecialchars($data["jurusan"]);
 
+	die('Check');
+
 	// query insert data
 	$query = "INSERT INTO group_diss
 				VALUES
