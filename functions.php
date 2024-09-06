@@ -151,11 +151,10 @@ function upload() {
 	$user = $_SESSION["userId"];
 
 	// cek apakah tidak ada gambar yang di upload
-	// angka 4 merupakan pesan error 
 	if ( $error === 4 ) {
 		echo "<script>
-				alert('please choose your file!');
-		</script>";
+                alert('please choose your file!');
+        </script>";
 		return false;
 	}
 
@@ -165,16 +164,16 @@ function upload() {
 	$ekstensiGambar = strtolower(end($ekstensiGambar));
 	if ( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
 		echo "<script>
-				alert('Please upload only word, ppt or pdf file!');
-		</script>";
+                alert('Please upload only word, ppt or pdf file!');
+        </script>";
 		return false;
 	}
 
 	// cek jika ukurannya terlalu besar
 	if ( $ukuranFile > 5000000 ) {
 		echo "<script>
-				alert('Please upload file less than 5 MB!');
-		</script>";
+                alert('Please upload file less than 5 MB!');
+        </script>";
 		return false;
 	}
 
@@ -189,12 +188,10 @@ function upload() {
 		}
 	}
 
-	// lolos pengecekan, gambar siap di upload
-	// generate nama gambar baru
-
-	$namaFileBaru = uniqid();
-	$namaFileBaru .= '.';
-	$namaFileBaru .= $ekstensiGambar;
+	// Modify the file name
+	$namaFileBaru = pathinfo($namaFile, PATHINFO_FILENAME); // Get file name without extension
+	$namaFileBaru = str_replace(' ', '_', $namaFileBaru); // Replace spaces with underscores
+	$namaFileBaru .= '.' . $ekstensiGambar; // Append the extension
 
 	$location .= "/".$namaFileBaru;
 
@@ -207,6 +204,7 @@ function upload() {
 	echo "File uploaded successfully :)";
 	return $namaFileBaru;
 }
+
 
 
 

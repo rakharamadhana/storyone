@@ -50,51 +50,68 @@ function  tambah($data) {
 
 function upload() {
 
-	$namaFile = $_FILES['gambar']['name'];
-	$ukuranFile = $_FILES['gambar']['size'];
-	$error = $_FILES['gambar']['error'];
-	$tmpName = $_FILES['gambar']['tmp_name'];
+    $namaFile = $_FILES['gambar']['name'];
+    $ukuranFile = $_FILES['gambar']['size'];
+    $error = $_FILES['gambar']['error'];
+    $tmpName = $_FILES['gambar']['tmp_name'];
 
-	// cek apakah tidak ada gambar yang di upload
-	// angka 4 merupakan pesan error 
-	if ( $error === 4 ) {
-		echo "<script>
-				alert('pilih gambar terlebih dahulu!');
-		</script>";
-		return false;
-	}
+    $user = $_SESSION["userId"];
 
-	// cek apakah yang di upload adalah gambar
-	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
-	$ekstensiGambar = explode('.', $namaFile);
-	$ekstensiGambar = strtolower(end($ekstensiGambar));
-	if ( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
-		echo "<script>
-				alert('yang anda upload bukan gambar!');
-		</script>";
-		return false;
-	}
+    // cek apakah tidak ada gambar yang di upload
+    if ( $error === 4 ) {
+        echo "<script>
+                alert('please choose your file!');
+        </script>";
+        return false;
+    }
 
-	// cek jika ukurannya terlalu besar
-	if ( $ukuranFile > 1000000 ) {
-		echo "<script>
-				alert('ukuran gambar terlalu besar!');
-		</script>";
-		return false;
-	}
+    // cek apakah yang di upload adalah gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'ppt', 'pptx'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if ( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
+        echo "<script>
+                alert('Please upload only word, ppt or pdf file!');
+        </script>";
+        return false;
+    }
 
-	// lolos pengecekan, gambar siap di upload
-	// generate nama gambar baru
+    // cek jika ukurannya terlalu besar
+    if ( $ukuranFile > 5000000 ) {
+        echo "<script>
+                alert('Please upload file less than 5 MB!');
+        </script>";
+        return false;
+    }
 
-	$namaFileBaru = uniqid();
-	$namaFileBaru .= '.';
-	$namaFileBaru .= $ekstensiGambar;
+    # Location
+    $location = __DIR__."/filestory_upload/".$user;
 
-	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+    # create directory if not
+    if(!is_dir($location)){
+        if (!mkdir($location, 0755, true)) {
+            $error = error_get_last();
+            die('Failed to create directory: ' . $error['message']);
+        }
+    }
 
-	return $namaFileBaru;
+    // Modify the file name
+    $namaFileBaru = pathinfo($namaFile, PATHINFO_FILENAME); // Get file name without extension
+    $namaFileBaru = str_replace(' ', '_', $namaFileBaru); // Replace spaces with underscores
+    $namaFileBaru .= '.' . $ekstensiGambar; // Append the extension
 
+    $location .= "/".$namaFileBaru;
+
+    # Upload file
+    if (!move_uploaded_file($tmpName, $location)) { // Copy the file, returns false if failed
+        die("Can't move file to ". $location);
+    }
+    unlink($tmpName); // Delete the temp file
+
+    echo "File uploaded successfully :)";
+    return $namaFileBaru;
 }
+
 
 
 

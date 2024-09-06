@@ -64,9 +64,6 @@ function  theme_ans($data) {
 	return mysqli_affected_rows($conn);
 }
 
-
-
-
 function upload() {
 
 	$namaFile = $_FILES['gambar']['name'];
@@ -74,49 +71,62 @@ function upload() {
 	$error = $_FILES['gambar']['error'];
 	$tmpName = $_FILES['gambar']['tmp_name'];
 
+	$user = $_SESSION["userId"];
+
 	// cek apakah tidak ada gambar yang di upload
-	// angka 4 merupakan pesan error 
 	if ( $error === 4 ) {
 		echo "<script>
-				alert('pilih gambar terlebih dahulu!');
-		</script>";
+                alert('please choose your file!');
+        </script>";
 		return false;
 	}
 
 	// cek apakah yang di upload adalah gambar
-	$ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+	$ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf', 'ppt', 'pptx'];
 	$ekstensiGambar = explode('.', $namaFile);
 	$ekstensiGambar = strtolower(end($ekstensiGambar));
 	if ( !in_array($ekstensiGambar, $ekstensiGambarValid) ) {
 		echo "<script>
-				alert('yang anda upload bukan gambar!');
-		</script>";
+                alert('Please upload only word, ppt or pdf file!');
+        </script>";
 		return false;
 	}
 
 	// cek jika ukurannya terlalu besar
-	if ( $ukuranFile > 1000000 ) {
+	if ( $ukuranFile > 5000000 ) {
 		echo "<script>
-				alert('ukuran gambar terlalu besar!');
-		</script>";
+                alert('Please upload file less than 5 MB!');
+        </script>";
 		return false;
 	}
 
-	// lolos pengecekan, gambar siap di upload
-	// generate nama gambar baru
+	# Location
+	$location = __DIR__."/filestory_upload/".$user;
 
-	$namaFileBaru = uniqid();
-	$namaFileBaru .= '.';
-	$namaFileBaru .= $ekstensiGambar;
+	# create directory if not
+	if(!is_dir($location)){
+		if (!mkdir($location, 0755, true)) {
+			$error = error_get_last();
+			die('Failed to create directory: ' . $error['message']);
+		}
+	}
 
-	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+	// Modify the file name
+	$namaFileBaru = pathinfo($namaFile, PATHINFO_FILENAME); // Get file name without extension
+	$namaFileBaru = str_replace(' ', '_', $namaFileBaru); // Replace spaces with underscores
+	$namaFileBaru .= '.' . $ekstensiGambar; // Append the extension
 
+	$location .= "/".$namaFileBaru;
+
+	# Upload file
+	if (!move_uploaded_file($tmpName, $location)) { // Copy the file, returns false if failed
+		die("Can't move file to ". $location);
+	}
+	unlink($tmpName); // Delete the temp file
+
+	echo "File uploaded successfully :)";
 	return $namaFileBaru;
-
 }
-
-
-
 
 function hapusdesign($id) {
 	global $conn;

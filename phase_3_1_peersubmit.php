@@ -251,7 +251,7 @@ body {
     </div>
     <div class="w3-col w3-container w3-rest">
 
-    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 同儕回饋一 :</span> <br>
+    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 同儕草稿一Draft 1回饋：</span> <br>
     
     <b>同儕給<span style="color: red;">我的</span>建議</b><br>
       <?php $i = 1; ?>
@@ -270,7 +270,7 @@ body {
 
     </p>
 
-    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 同儕回饋二 :</span> <br>
+    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 同儕草稿二Draft 2回饋：</span> <br>
     
     <b>同儕給<span style="color: red;">我的</span>建議</b><br>
       <?php $i = 1; ?>
@@ -289,7 +289,7 @@ body {
 
     </p>
 
-    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 同儕回饋三 :</span> <br>
+    <p><span style="font-size: 30px;"><i class='fas fa-caret-right'></i> 期末成發Final回饋：</span> <br>
     
     <b>同儕給<span style="color: red;">我的</span>建議</b><br>
       <?php $i = 1; ?>
