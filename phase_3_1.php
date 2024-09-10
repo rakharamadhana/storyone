@@ -97,7 +97,7 @@ body {
 
 	<div class="w3-row w3-lime">
 	  <div class="w3-col w3-container w3-xxlarge w3-third"><p>草稿一 Draft 1 : </p></div>
-	<div class="w3-col w3-container w3-twothird"><h1><a href="phase_3_1_peerreflection.php" class="w3-button w3-section w3-green w3-ripple" style="width:100%">數位敘事同儕回饋
+	<div class="w3-col w3-container w3-twothird"><h1><a href="phase_3_1_peerreflection.php" class="w3-button w3-section w3-green w3-ripple" style="width:100%">數位敘事同儕回饋（期中）
 
 </a><!-- <a href="phase_3_1_step2_flipped.php" class="w3-button w3-section w3-green w3-ripple" style="width:50%">week 2</a>--></h1></div>
 
@@ -114,7 +114,7 @@ body {
 
 	<div class="w3-row w3-lime">
 	  <div class="w3-col w3-container w3-xxlarge w3-third"><p>期末成發 Final : </p></div>
-	<div class="w3-col w3-container w3-twothird"><h1><a href="phase_3_3_peerreflection.php" class="w3-button w3-section w3-green w3-ripple" style="width:100%">數位敘事同儕回饋
+	<div class="w3-col w3-container w3-twothird"><h1><a href="phase_3_3_peerreflection.php" class="w3-button w3-section w3-green w3-ripple" style="width:100%">數位敘事同儕回饋（期末）
 
 </a></h1></div>
 	</div>
