@@ -160,8 +160,7 @@ body {
         <div class="w3-row w3-lime">
             <div class="w3-col w3-container w3-half">
                 <!-- Link to open the file -->
-                <a href="<?= __DIR__.'/filestory_upload/' . $userId . '/' . $row['gambar']; ?>" target="_blank" class="w3-button w3-section w3-blue w3-ripple">
-                    <?= htmlspecialchars($row["gambar"]); ?>
+                <a href="<?= '/filestory_upload/' . $userId . '/' . $row['gambar']; ?>" target="_blank"><?= htmlspecialchars($row["gambar"]); ?>
                 </a>
             </div>
             <div class="w3-col w3-container w3-quarter">
