@@ -156,12 +156,21 @@ body {
 	<?php $i = 1; ?>	
 	<?php foreach ( $filedesign as $row ) : ?>
 
-	<div class="w3-row w3-lime">
-	  <div class="w3-col w3-container w3-half"><p><?= $row["gambar"]; ?></p></div>
-	  <div class="w3-col w3-container w3-quarter"><a href="phase_2_1_deletefile.php?id=<?= $row["id"]; ?>" onclick="return confirm('Do you want to delete?');" class="w3-button w3-section w3-green w3-ripple"><i class='far fa-trash-alt' style='font-size:24px'></i></a></div>
-	</div>
+        <div class="w3-row w3-lime">
+            <div class="w3-col w3-container w3-half">
+                <!-- Link to open the file -->
+                <a href="<?= $row['gambar']; ?>" target="_blank" class="w3-button w3-section w3-blue w3-ripple">
+                    <?= htmlspecialchars($row["gambar"]); ?>
+                </a>
+            </div>
+            <div class="w3-col w3-container w3-quarter">
+                <a href="phase_2_1_deletefile.php?id=<?= $row["id"]; ?>" onclick="return confirm('Do you want to delete?');" class="w3-button w3-section w3-green w3-ripple">
+                    <i class='far fa-trash-alt' style='font-size:24px'></i>
+                </a>
+            </div>
+        </div>
 
-	<?php $i++; ?>
+        <?php $i++; ?>
 	<?php endforeach; ?>	
 	<!-- End looping for the div table -->
 
