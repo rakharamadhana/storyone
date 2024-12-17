@@ -11,7 +11,8 @@ require 'functions.php';
 
 $design = query("SELECT * FROM design WHERE user = '".$_SESSION["userId"]."' ORDER BY page_order ASC");
 
-
+// Retrieve userId from the session
+$userId = $_SESSION["userId"];
 
 // Upload file untuk file design
 if ( isset($_POST["submit"]) ) {
@@ -159,7 +160,7 @@ body {
         <div class="w3-row w3-lime">
             <div class="w3-col w3-container w3-half">
                 <!-- Link to open the file -->
-                <a href="<?= $row['gambar']; ?>" target="_blank" class="w3-button w3-section w3-blue w3-ripple">
+                <a href="<?= __DIR__.'/filestory_upload/' . $userId . '/' . $row['gambar']; ?>" target="_blank" class="w3-button w3-section w3-blue w3-ripple">
                     <?= htmlspecialchars($row["gambar"]); ?>
                 </a>
             </div>
